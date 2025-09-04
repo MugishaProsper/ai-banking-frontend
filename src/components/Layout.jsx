@@ -11,8 +11,8 @@ function Sidebar() {
     }`
 
   return (
-    <aside className="w-64 fixed inset-0 shrink-0 border-r border-gray-200 bg-gray-200 dark:border-gray-700 dark:bg-gray-800 flex flex-col items-center justify-between">
-      <div className='border w-full'>
+    <aside className="sticky inset-0 w-full min-h-screen bg-gray-200 dark:border-red-700 dark:bg-gray-800 flex flex-col items-center justify-between">
+      <div className='w-full'>
         <div className="px-4 py-6">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
@@ -56,7 +56,7 @@ function Sidebar() {
           </NavLink>
         </nav>
       </div>
-      <div className='border'>
+      <div className='border w-full'>
         <NavLink to="/settings" className={linkClass}>
           <div className="flex items-center gap-3">
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ function Sidebar() {
         <div>
           <NavLink to="/login" className={linkClass}>
             <div className="flex items-center gap-3">
-              Help & Support
+              Logout
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
               </svg>
@@ -111,7 +111,7 @@ function Header({ onOpenAI }) {
   }, [])
 
   return (
-    <header className="sticky top-0 z-10 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-800/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-800/60 ml-64">
+    <header className="sticky inset-0 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-800/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-800/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <div className="text-lg font-medium text-gray-900 dark:text-white">Welcome back, John</div>
         <div className="flex items-center gap-4">
@@ -138,11 +138,13 @@ export default function Layout() {
   const [isAIOpen, setIsAIOpen] = useState(false)
 
   return (
-    <div className="flex min-h-dvh bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <Sidebar />
-      <div className="flex min-w-0 flex-1 flex-col">
+    <div className="min-h-screen flex flex-row items-top w-full bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className='w-72'>
+        <Sidebar />
+      </div>
+      <div className="flex flex-col w-full border-r border-gray-200">
         <Header onOpenAI={() => setIsAIOpen(true)} />
-        <main className="mx-auto w-full max-w-7xl flex-1 px-6 py-8">
+        <main className="mx-auto flex px-6 py-8">
           <Outlet />
         </main>
       </div>

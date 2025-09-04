@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import InteractiveChart from '../components/InteractiveChart'
-import SimpleChart from "../components/SimpleChart"
 
 export default function Dashboard() {
   const navigate = useNavigate();
