@@ -1,0 +1,75 @@
+/* Dark Mode Styles - Force these to work */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+}
+
+/* Layout dark mode */
+html.dark .dark\\:bg-gray-900 {
+  background-color: #111827 !important;
+}
+
+html.dark .dark\\:bg-gray-800 {
+  background-color: #1f2937 !important;
+}
+
+html.dark .dark\\:bg-gray-700 {
+  background-color: #374151 !important;
+}
+
+html.dark .dark\\:bg-gray-600 {
+  background-color: #4b5563 !important;
+}
+
+/* Text dark mode */
+html.dark .dark\\:text-white {
+  color: #ffffff !important;
+}
+
+html.dark .dark\\:text-gray-300 {
+  color: #d1d5db !important;
+}
+
+html.dark .dark\\:text-gray-400 {
+  color: #9ca3af !important;
+}
+
+html.dark .dark\\:text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Border dark mode */
+html.dark .dark\\:border-gray-700 {
+  border-color: #374151 !important;
+}
+
+html.dark .dark\\:border-gray-600 {
+  border-color: #4b5563 !important;
+}
+
+/* Hover states */
+html.dark .dark\\:hover\\:bg-gray-700:hover {
+  background-color: #374151 !important;
+}
+
+html.dark .dark\\:hover\\:bg-gray-800:hover {
+  background-color: #1f2937 !important;
+}
+
+html.dark .dark\\:hover\\:text-white:hover {
+  color: #ffffff !important;
+}
+
+/* Focus states */
+html.dark .dark\\:focus\\:ring-blue-800:focus {
+  --tw-ring-color: #1e3a8a !important;
+}
+
+/* Backdrop blur */
+html.dark .dark\\:supports-\\[backdrop-filter\\]\\:bg-gray-800\\60 {
+  background-color: rgba(31, 41, 55, 0.6) !important;
+}
