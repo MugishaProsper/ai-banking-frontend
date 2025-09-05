@@ -1,7 +1,8 @@
-import { History } from 'lucide-react'
 import { useState } from 'react'
+import InteractiveChart from '../components/InteractiveChart'
 
 export default function Transfers() {
+  const [isNewTransferModalOpen, setIsNewTransferModalOpen] = useState(false)
   const [formData, setFormData] = useState({
     fromAccount: 'chk-001',
     toAccount: 'sav-002',
@@ -43,20 +44,44 @@ export default function Transfers() {
     return account ? account.balance : 0
   }
 
-  const isValidAmount = formData.amount && parseFloat(formData.amount) > 0 && parseFloat(formData.amount) <= getAccountBalance(formData.fromAccount)
-
+  const isValidAmount = formData.amount && parseFloat(formData.amount) > 0 && parseFloat(formData.amount) <= getAccountBalance(formData.fromAccount);
   return (
-    <div className="space-y-8 min-h-screen w-full">
+    <div className='w-full space-y-6'>
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-grey-900 dark:text-grey-200">Transfers</h1>
           <p className="mt-1 text-gray-600">Move money between your accounts</p>
         </div>
-        <button className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors flex items-center gap-1">
+        <button
+          className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors flex items-center gap-1"
+          onClick={() => setIsNewTransferModalOpen(true)}
+        >
           New Transfer
         </button>
       </div>
+      <div className='flex flex-row items-center border w-full'>
+        <div className='w-2/3'>
+          <InteractiveChart title={"Transfer Trend"} />
+        </div>
+        <div className=''>
+          <div>
+            Recent Transfers
+          </div>
+        </div>
+      </div>
+      {
+        isNewTransferModalOpen && (
+          <NewTransfer />
+        )
+      }
+    </div>
+  )
+}
 
+
+const NewTransfer = () => {
+  return (
+    <div className="space-y-8 min-h-screen w-full">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {/* Transfer Form */}
         <div className="lg:col-span-2">
@@ -235,5 +260,3 @@ export default function Transfers() {
     </div>
   )
 }
-
-

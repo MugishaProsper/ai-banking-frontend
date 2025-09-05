@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import AIAssistant from './AIAssistant'
-import DarkModeToggle from './DarkModeToggle'
+import AIAssistant from '../AIAssistant'
+import DarkModeToggle from '../DarkModeToggle'
 import { BanknoteIcon, Bot, CircleDollarSign, LayoutDashboard, LogIn, PersonStanding, SendToBack, Settings } from 'lucide-react';
 
 const sidebarData = [
