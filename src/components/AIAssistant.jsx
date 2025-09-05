@@ -31,8 +31,8 @@ const QUICK_ACTIONS = [
   { icon: "📊", label: "Spending Report", action: "Generate a detailed spending report for this month" },
   { icon: "🎯", label: "Savings Goal", action: "Help me set and track a new savings goal" },
   { icon: "📈", label: "Investment Advice", action: "Provide personalized investment recommendations" },
-  { icon: "🔒", label: "Security Check", action: "Review my account security settings" },
-  { icon: "💳", label: "Card Benefits", action: "Explain the benefits of my credit card" }
+  //{ icon: "🔒", label: "Security Check", action: "Review my account security settings" },
+  //{ icon: "💳", label: "Card Benefits", action: "Explain the benefits of my credit card" }
 ]
 
 export default function AIAssistant({ isOpen, onClose }) {
@@ -158,7 +158,7 @@ export default function AIAssistant({ isOpen, onClose }) {
         </div>
 
         {/* Messages */}
-        <div className="h-96 overflow-y-auto p-4 space-y-4">
+        <div className={`${ !showQuickActions ? "h-94" : "" } overflow-y-auto p-4 space-y-4`}>
           {messages.map((message) => (
             <div
               key={message.id}
@@ -189,20 +189,19 @@ export default function AIAssistant({ isOpen, onClose }) {
               </div>
             </div>
           )}
-
           <div ref={messagesEndRef} />
         </div>
 
         {/* Quick Actions */}
         {showQuickActions && (
-          <div className="px-4 pb-3">
+          <div className="px-4">
             <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">Quick Actions:</p>
             <div className="grid grid-cols-2 gap-2">
               {QUICK_ACTIONS.map((action, index) => (
                 <button
                   key={index}
                   onClick={() => handleQuickAction(action)}
-                  className="flex flex-col items-center gap-1 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-xs"
+                  className="flex flex-col items-center gap-1 p-2 rounded-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-xs"
                 >
                   <span className="text-lg">{action.icon}</span>
                   <span className="text-gray-700 dark:text-gray-300 text-center leading-tight">

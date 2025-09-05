@@ -212,7 +212,6 @@ export default function InteractiveChart({
           return renderLineChart()
       }
     } catch (error) {
-      console.error('Chart rendering error:', error)
       return (
         <div className="flex items-center justify-center h-full text-gray-500">
           <div className="text-center">
@@ -228,39 +227,38 @@ export default function InteractiveChart({
     <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-sm">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+      </div>
+      <div className="flex items-center gap-4">
+        {/* Chart type selector */}
+        <div className="flex rounded-lg border border-gray-200 dark:border-gray-600 p-1">
+          {Object.values(ChartTypes).map((chartTypeOption) => (
+            <button
+              key={chartTypeOption}
+              onClick={() => setChartType(chartTypeOption)}
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${chartType === chartTypeOption
+                ? 'bg-blue-600 text-white'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+            >
+              {chartTypeOption.charAt(0).toUpperCase() + chartTypeOption.slice(1)}
+            </button>
+          ))}
+        </div>
 
-        <div className="flex items-center gap-4">
-          {/* Chart type selector */}
-          <div className="flex rounded-lg border border-gray-200 dark:border-gray-600 p-1">
-            {Object.values(ChartTypes).map((chartTypeOption) => (
-              <button
-                key={chartTypeOption}
-                onClick={() => setChartType(chartTypeOption)}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${chartType === chartTypeOption
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                  }`}
-              >
-                {chartTypeOption.charAt(0).toUpperCase() + chartTypeOption.slice(1)}
-              </button>
-            ))}
-          </div>
-
-          {/* Period selector */}
-          <div className="flex rounded-lg border border-gray-200 dark:border-gray-600 p-1">
-            {periods.map((period) => (
-              <button
-                key={period.key}
-                onClick={() => setSelectedPeriod(period.key)}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${selectedPeriod === period.key
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
-                  }`}
-              >
-                {period.label}
-              </button>
-            ))}
-          </div>
+        {/* Period selector */}
+        <div className="flex rounded-sm border border-gray-200 dark:border-gray-600 p-1">
+          {periods.map((period) => (
+            <button
+              key={period.key}
+              onClick={() => setSelectedPeriod(period.key)}
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${selectedPeriod === period.key
+                ? 'bg-blue-600 text-white'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                }`}
+            >
+              {period.label}
+            </button>
+          ))}
         </div>
       </div>
 

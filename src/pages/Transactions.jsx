@@ -6,9 +6,9 @@ const sample = [
 
 export default function Transactions() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 min-h-screen w-full">
       <h1 className="text-2xl font-semibold">Transactions</h1>
-      <div className="rounded-lg border border-gray-200 bg-white p-4">
+      <div className="rounded-lg border border-gray-200 bg-white dark:bg-gray-800 p-4 w-full border">
         <div className="flex flex-wrap items-center gap-3">
           <input className="h-9 w-56 rounded border border-gray-200 px-3 text-sm outline-none focus:ring-2 focus:ring-gray-200" placeholder="Search description" />
           <select className="h-9 rounded border border-gray-200 px-3 text-sm outline-none">
@@ -19,7 +19,7 @@ export default function Transactions() {
         </div>
         <div className="mt-4 overflow-hidden rounded-lg border border-gray-200">
           <table className="min-w-full text-left text-sm">
-            <thead className="bg-gray-50">
+            <thead className="bg-gray-50 dark:bg-gray-800">
               <tr>
                 <th className="px-4 py-3 font-medium">Date</th>
                 <th className="px-4 py-3 font-medium">Description</th>

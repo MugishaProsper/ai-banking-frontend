@@ -4,14 +4,14 @@ import InteractiveChart from '../components/InteractiveChart'
 export default function Dashboard() {
   const navigate = useNavigate();
   return (
-    <div className="space-y-8">
+    <div className="min-h-screen w-full space-y-8">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Dashboard</h1>
           <p className="mt-1 text-gray-600 dark:text-gray-400">Welcome back! Here's your financial overview.</p>
         </div>
         <div className="flex gap-3">
-          <button className="rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="rounded-lg border border-gray-200 bg-white dark:bg-gray-800 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
             Export
           </button>
           <button
