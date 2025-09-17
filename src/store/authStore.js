@@ -11,7 +11,7 @@ const useAuthStore = create(
       isAuthenticated: false,
       isLoading: false,
       mfaRequired: false,
-      kycStatus: 'pending', // pending, verified, rejected, expired
+      kycStatus: 'PENDING', // pending, verified, rejected, expired
       
       // Actions
       setUser: (user) => set({ user, isAuthenticated: !!user }),
@@ -70,7 +70,7 @@ const useAuthStore = create(
             isAuthenticated: true,
             mfaRequired: false,
             isLoading: false,
-            kycStatus: data.user.kyc_status || 'pending'
+            kycStatus: data.user.kyc_status || 'PENDING'
           })
           
           return { success: true }
@@ -87,7 +87,7 @@ const useAuthStore = create(
           refreshToken: null,
           isAuthenticated: false,
           mfaRequired: false,
-          kycStatus: 'pending'
+          kycStatus: 'PENDING'
         })
       },
       
@@ -138,12 +138,12 @@ const useAuthStore = create(
       
       isKycVerified: () => {
         const { kycStatus } = get()
-        return kycStatus === 'verified'
+        return kycStatus === 'VERIFIED'
       },
       
       needsKyc: () => {
         const { kycStatus } = get()
-        return ['pending', 'rejected', 'expired'].includes(kycStatus)
+        return ['PENDING', 'REJECTED', 'EXPIRED'].includes(kycStatus)
       },
     }),
     {
