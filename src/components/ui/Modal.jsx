@@ -21,18 +21,18 @@ export default function Modal({
         onClose()
       }
     }
-    
+
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
       document.body.style.overflow = 'hidden'
     }
-    
+
     return () => {
       document.removeEventListener('keydown', handleEscape)
       document.body.style.overflow = 'unset'
     }
   }, [isOpen, onClose])
-  
+
   const sizes = {
     xs: 'max-w-md',
     sm: 'max-w-lg',
@@ -41,13 +41,13 @@ export default function Modal({
     xl: 'max-w-6xl',
     full: 'max-w-full mx-4',
   }
-  
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog 
-        as="div" 
-        className="relative z-50" 
-        onClose={closeOnOverlayClick ? onClose : () => {}}
+      <Dialog
+        as="div"
+        className="relative z-50"
+        onClose={closeOnOverlayClick ? onClose : () => { }}
       >
         <Transition.Child
           as={Fragment}
@@ -72,14 +72,14 @@ export default function Modal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel 
+              <Dialog.Panel
                 className={`w-full ${sizes[size]} transform overflow-hidden rounded-2xl bg-white dark:bg-gray-800 p-0 text-left align-middle shadow-xl transition-all ${className}`}
               >
                 {(title || showCloseButton) && (
                   <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                     {title && (
-                      <Dialog.Title 
-                        as="h3" 
+                      <Dialog.Title
+                        as="h3"
                         className="text-lg font-semibold text-gray-900 dark:text-white"
                       >
                         {title}
@@ -97,11 +97,11 @@ export default function Modal({
                     )}
                   </div>
                 )}
-                
+
                 <div className="px-6 py-4">
                   {children}
                 </div>
-                
+
                 {footer && (
                   <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/50">
                     {footer}
@@ -117,21 +117,21 @@ export default function Modal({
 }
 
 // Pre-configured modal variants
-export function ConfirmModal({ 
-  isOpen, 
-  onClose, 
-  onConfirm, 
-  title = 'Confirm Action', 
-  message, 
+export function ConfirmModal({
+  isOpen,
+  onClose,
+  onConfirm,
+  title = 'Confirm Action',
+  message,
   confirmText = 'Confirm',
   cancelText = 'Cancel',
-  variant = 'danger' 
+  variant = 'danger'
 }) {
   const handleConfirm = () => {
     onConfirm()
     onClose()
   }
-  
+
   return (
     <Modal
       isOpen={isOpen}
